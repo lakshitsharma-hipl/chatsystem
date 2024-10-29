@@ -114,7 +114,7 @@ io.on('connection', async (socket) => {
 // Listen on the appropriate port for your server
 const PORT = process.env.PORT || 5159;
 server.listen(PORT, () => {
-    console.log(`Server is running on http://192.168.1.46:${PORT}`);    
+    console.log(`Server is running on http://localhost:${PORT}`);    
 });
 
 module.exports = app;

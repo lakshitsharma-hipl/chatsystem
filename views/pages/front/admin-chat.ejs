@@ -51,7 +51,7 @@
                                         <li class="message <%=(response.user_id == 1) ? 'right': 'left'%>">
                                             <div class="chat-date"><%=formattedDate%></div>
                                             <div class="chatblock">
-                                                <p><%=response.message%></p>
+                                                <p><%-response.message%></p>
                                             </div>
                                         </li>
                                     <% }) %>
@@ -61,17 +61,19 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control" id="send-message" placeholder="Type your Message....">
                                             <div class="input-group-prepend">
-                                                <!-- <input type="text" id="search" placeholder="Search for a GIF..."> -->
+                                                <!--  -->
+                                                <div class="gif_popup">
+                                                    <div class="gif_search_con">
+                                                        <input type="text" class="gif_search_keyup" id="gif_search_keyup" placeholder="Search for a GIF...">
+                                                    </div>
+                                                    <div id="gif-container"></div>                                                    
+                                                </div>
                                                 <a href="javascript:void(0)" class="gif_pop_opener"><img src="/images/gif.svg" /></a>
-
                                                 <!-- <button onclick="searchGif()">Search</button> -->
                                                 <button id="emojiButton" type="button">😊</button>
                                                 <emoji-picker id="emojiPicker" style="display: none;"></emoji-picker>
                                                 <button class="btn"><i class="fa fa-paper-plane"></i></button>
-                                            </div>
-                                            <div class="gif_all_cont">
-                                                <div id="gif-container"></div>
-                                            </div>
+                                            </div>                                            
                                         </div>
                                     </form>
                                 </div>

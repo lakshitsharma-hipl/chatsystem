@@ -162,35 +162,48 @@ jQuery(document).ready(function ($) {
         });
     }    
     $('.gif_pop_opener').on('click', function(event) {
-        event.preventDefault();        
+        $('.gif_popup').toggle();
+        searchGif();
+        event.stopPropagation();
     });
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('.gif_popup').length) {
+            $('.gif_popup').hide();
+        }
+    });
+    
+    async function searchGif() {
+        const query = document.getElementById('gif_search_keyup').value || 'funny';
+        const response = await fetch(`/search-gif?q=${query}`);
+        const gifs = await response.json();
+
+        // Display GIFs in the container
+        const gifContainer = document.getElementById('gif-container');
+        gifContainer.innerHTML = ''; // Clear previous results
+
+        gifs.forEach(gif => {
+            const img = document.createElement('img');
+            img.src = gif.media_formats.gif.url;
+            img.alt = gif.content_description;
+            img.classList.add('gif-image');
+
+            img.onclick = () => selectGif(gif.media_formats.gif.url, socket, roomName); // Select GIF when clicked
+
+            gifContainer.appendChild(img);
+        });
+    }
+    $('#gif_search_keyup').on('keyup', searchGif);
+    
 });
 
-async function searchGif() {
-    const query = document.getElementById('search').value || 'funny';
-    const response = await fetch(`/search-gif?q=${query}`);
-    const gifs = await response.json();
 
-    // Display GIFs in the container
-    const gifContainer = document.getElementById('gif-container');
-    gifContainer.innerHTML = ''; // Clear previous results
 
-    gifs.forEach(gif => {
-        const img = document.createElement('img');
-        img.src = gif.media_formats.gif.url;
-        img.alt = gif.content_description;
-        img.classList.add('gif-image');
-        
-        img.onclick = () => selectGif(gif.media_formats.gif.url); // Select GIF when clicked
-        
-        gifContainer.appendChild(img);
-    });
-}
+function selectGif(url, socket, roomName) {    
 
-function selectGif(url) {    
     const input = document.getElementById('send-message');
-    const recipient_id = 1;
-    const user_id = $(".select-client").val();
+    const recipient_id = $(".select-client").val();
+    const user_id = 1;
+    
     const message = `<img src="`+url+`" />`;
     const username = document.getElementById('chat-message').getAttribute('data-username');
     if (message) {
@@ -203,5 +216,6 @@ function selectGif(url) {
         socket.emit('chatMessage', { roomName, msg });
         socket.emit('adminMessageReceived', { roomName: 'adminRoom', msg });
         input.value = '';
+        $('.gif_popup').hide();
     }
 }
