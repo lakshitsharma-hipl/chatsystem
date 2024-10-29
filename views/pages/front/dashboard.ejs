@@ -1,0 +1,74 @@
+<section class="main-content-outer h-100">
+    <div class="container-fluid h-100">
+        <div class="form-row h-100">
+            <div class="main-content-section">
+                <div class="right-panel">
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <div class="title-bg title2 d-flex align-items-center justify-content-between">
+                                <div class="menu-wrapper-title">
+                                    <div class="menu-baricon">
+                                        <a href="javascript:void(0);" class="sidemenu-wrap">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-menu-2" width="44" height="44"
+                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="#6c757d" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M4 6l16 0"></path>
+                                                <path d="M4 12l16 0"></path>
+                                                <path d="M4 18l16 0"></path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <img src="images/client.svg" alt="icon">
+                                </div>
+                                <h1>User Listing</h1>
+                                <div class="d-flex sendInvitation-box">
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="form-block">
+                                <div class="table-responsive border">
+                                    <table class="table table-hover coach-client-table mb-0 coach_client_datatable"
+                                        id="myTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>User Name</th>
+                                                <th>Message</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% user_list.map(function(response,i){ %>
+                                                <% if(response.id != 1){ %>
+                                                    <tr>
+                                                        <td>
+                                                            <%=i%>
+                                                        </td>
+                                                        <td>
+                                                            <%=response.name%>
+                                                        </td>
+                                                        <td>
+                                                            <div class="td-icons">
+                                                                <a href="/admin/chat/<%=response.id%>">
+                                                                    <i class="fa fa-envelope"></i>
+                                                                    <span class="count count<%=response.id%>"><%=response.message_count%></span>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                <% } %>
+                                            <% }) %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

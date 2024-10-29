@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" version="1.1" id="svg633" width="682.66669" height="682.66669" viewBox="0 0 682.66669 682.66669">
+  <defs id="defs637">
+    <clipPath clipPathUnits="userSpaceOnUse" id="clipPath647">
+      <path d="M 0,512 H 512 V 0 H 0 Z" id="path645"/>
+    </clipPath>
+  </defs>
+  <mask id="custom"><rect id="bg" x="0" y="0" width="100%" height="100%" fill="white"/><g transform="matrix(1.3333333,0,0,-1.3333333,0,682.66667)"><path transform="matrix(1,0,0,1,256,116)" d="m 0,0 c 5.52,0 10,-4.48 10,-10 0,-5.52 -4.48,-10 -10,-10 -5.52,0 -10,4.48 -10,10 0,5.52 4.48,10 10,10" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path651"/></g></mask><g mask="url(#custom)"><g id="g639" transform="matrix(1.3333333,0,0,-1.3333333,0,682.66667)">
+    <g id="g641">
+      <g id="g643" clip-path="url(#clipPath647)">
+        <g id="g649" transform="translate(256,116)">
+          <path d="m 0,0 c 5.52,0 10,-4.48 10,-10 0,-5.52 -4.48,-10 -10,-10 -5.52,0 -10,4.48 -10,10 0,5.52 4.48,10 10,10" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path651"/>
+        </g>
+        <g id="g653" transform="translate(469,196)">
+          <path d="m 0,0 c 0,-27.61 -22.39,-50 -50,-50 -27.61,0 -50,22.39 -50,50 0,27.61 22.39,50 50,50 C -22.39,50 0,27.61 0,0 Z" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path655"/>
+        </g>
+        <g id="g657" transform="translate(146,26)">
+          <path d="m 0,0 h -136 v 20 c 0,44.18 38.82,80 83,80 27.01,0 53.89,-13.38 68.37,-33.88" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path659"/>
+        </g>
+        <g id="g661" transform="translate(350.6299,92.1201)">
+          <path d="m 0,0 c 14.48,20.5 41.36,33.88 68.37,33.88 44.18,0 83,-35.82 83,-80 v -20 h -136" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path663"/>
+        </g>
+        <g id="g665" transform="translate(143,196)">
+          <path d="m 0,0 c 0,-27.61 -22.39,-50 -50,-50 -27.61,0 -50,22.39 -50,50 0,27.61 22.39,50 50,50 C -22.39,50 0,27.61 0,0 Z" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path667"/>
+        </g>
+        <g id="g669" transform="translate(326,236)">
+          <path d="m 0,0 c 0,-38.66 -31.34,-70 -70,-70 -38.66,0 -70,31.34 -70,70 0,38.66 31.34,70 70,70 C -31.34,70 0,38.66 0,0 Z" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path671"/>
+        </g>
+        <g id="g673" transform="translate(255.6396,486)">
+          <path d="m 0,0 -21.63,-44.23 -48.36,-7.02 35,-34.11 -8.26,-48.17 43.25,22.74 c 16.25,-8.54 27.471,-14.44 43.261,-22.74 l -8.271,48.17 35,34.11 -48.36,7.02 z" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path675"/>
+        </g>
+        <g id="g677" transform="translate(425.2803,317.4102)">
+          <path d="M 0,0 30.79,-16.18 24.91,18.1 49.819,42.39 15.39,47.39 0,78.59 l -15.4,-31.2 -34.43,-5 24.91,-24.29 -5.88,-34.28 z" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path679"/>
+        </g>
+        <g id="g681" transform="translate(85.2798,317.4102)">
+          <path d="M 0,0 30.79,-16.18 24.91,18.1 49.82,42.39 15.39,47.39 0,78.59 -15.4,47.39 -49.83,42.39 -24.92,18.1 -30.8,-16.18 Z" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path683"/>
+        </g>
+        <g id="g685" transform="translate(366,26)">
+          <path d="m 0,0 h -220 v 10 c 0,20.5 5.61,39.69 15.37,56.12 19.18,32.26 54.38,53.88 94.63,53.88 30.38,0 57.88,-12.31 77.78,-32.22 6.47,-6.47 12.14,-13.74 16.85,-21.66 C -5.61,49.69 0,30.5 0,10 Z" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path687"/>
+        </g>
+        <g id="g689" transform="translate(294.3301,94.5498)">
+          <path d="M 0,0 C 10.7,-7.03 19.37,-16.91 24.91,-28.55" style="fill:none;stroke:#000000;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path691"/>
+        </g>
+      </g>
+    </g>
+  </g></g>
+</svg>

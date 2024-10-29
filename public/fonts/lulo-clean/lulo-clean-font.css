@@ -1,0 +1,12 @@
+/* FONT PATH
+  -------------------------- */
+@font-face {
+  font-family: "Lulo Clean One";
+  src: url('lulo-clean.eot') format('embedded-opentype'), 
+        url('lulo-clean.woff2') format('woff2'), 
+        url('lulo-clean.woff') format('woff'), 
+        url('lulo-clean.ttf') format('truetype'), 
+        url('lulo-clean.svg') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}

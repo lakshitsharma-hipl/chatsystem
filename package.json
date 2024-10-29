@@ -1,0 +1,27 @@
+{
+  "name": "chatsystem",
+  "version": "1.0.0",
+  "description": "Real time chat using socket",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Deepak Saini",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "emoji-picker-element": "^1.22.8",
+    "express": "^4.21.1",
+    "express-ejs-layouts": "^2.5.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.11.3",
+    "node-emoji": "^2.1.3",
+    "node-fetch": "^3.3.2",
+    "sequelize": "^6.37.5",
+    "socket.io": "^4.8.1",
+    "underscore": "^1.13.7"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.2"
+  }
+}

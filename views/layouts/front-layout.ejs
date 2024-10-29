@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title><%=title%></title>
+      <!-- Bootstrap -->
+      <link href="/css/bootstrap.min.css" rel="stylesheet">
+      <!-- FontAwesome -->
+      <link href="/css/font-awesome.css" rel="stylesheet">
+      <!-- Toastr -->
+      <link href="/toastr/toastr.min.css" rel="stylesheet">
+      <!-- Main -->
+      <link href="/css/main.css" rel="stylesheet">
+   </head>
+
+   <body>
+
+      <%- include('../partials/front/front-header.ejs'); %>
+
+      <%-body%>
+
+      <%- include('../partials/front/front-footer.ejs'); %>
+      
+      <!-- jQuery -->
+      <script type="text/javascript" src="/js/jquery.min.js"></script>
+      <script type="text/javascript" src="/js/popper.min.js"></script>
+      <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/toastr/toastr.min.js"></script>
+      <script type="text/javascript" src="/socket.io/socket.io.min.js"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@1.22.8/+esm"></script>
+      <script type="text/javascript" src="/js/chat.js"></script>      
+   </body>
+
+</html>
