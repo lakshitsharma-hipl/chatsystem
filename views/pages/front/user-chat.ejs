@@ -47,7 +47,7 @@
                                         <li class="message <%=(response.user_id == 1) ? 'left': 'right'%>">
                                             <div class="chat-date"><%=formattedDate%></div>
                                             <div class="chatblock">
-                                                <p><%=response.message%></p>
+                                                <p><%-response.message%></p>
                                             </div>
                                         </li>
                                     <% }) %>
@@ -57,6 +57,13 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control" id="send-message" placeholder="Type your Message....">
                                             <div class="input-group-prepend">
+                                                <div class="gif_popup">
+                                                    <div class="gif_search_con">
+                                                        <input type="text" class="gif_search_keyup" data-usertype="user" id="gif_search_keyup" placeholder="Search for a GIF...">
+                                                    </div>
+                                                    <div id="gif-container"></div>                                                    
+                                                </div>
+                                                <a href="javascript:void(0)" class="gif_pop_opener"><img src="/images/gif.svg" /></a>
                                                 <button id="emojiButton" type="button">😊</button>
                                                 <emoji-picker id="emojiPicker" style="display: none;"></emoji-picker>
                                                 <button class="btn"><i class="fa fa-paper-plane"></i></button>

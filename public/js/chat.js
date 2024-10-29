@@ -174,6 +174,10 @@ jQuery(document).ready(function ($) {
     
     async function searchGif() {
         const query = document.getElementById('gif_search_keyup').value || 'funny';
+        const element = document.getElementById('gif_search_keyup');
+        let usertype = element.getAttribute("data-usertype"); 
+
+        
         const response = await fetch(`/search-gif?q=${query}`);
         const gifs = await response.json();
 
@@ -187,7 +191,7 @@ jQuery(document).ready(function ($) {
             img.alt = gif.content_description;
             img.classList.add('gif-image');
 
-            img.onclick = () => selectGif(gif.media_formats.gif.url, socket, roomName); // Select GIF when clicked
+            img.onclick = () => selectGif(gif.media_formats.gif.url, socket, roomName, usertype); // Select GIF when clicked
 
             gifContainer.appendChild(img);
         });
@@ -198,11 +202,18 @@ jQuery(document).ready(function ($) {
 
 
 
-function selectGif(url, socket, roomName) {    
+function selectGif(url, socket, roomName, usertype) {    
 
     const input = document.getElementById('send-message');
-    const recipient_id = $(".select-client").val();
-    const user_id = 1;
+    let recipient_id = '';
+    let user_id = '';
+    if(usertype == 'admin') {
+        recipient_id = $(".select-client").val();
+        user_id = 1;    
+    } else {
+        recipient_id = 1;
+        user_id = $(".select-client").val();
+    }
     
     const message = `<img src="`+url+`" />`;
     const username = document.getElementById('chat-message').getAttribute('data-username');
