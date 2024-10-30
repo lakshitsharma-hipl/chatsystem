@@ -63,8 +63,9 @@ module.exports = {
 	},
     userToAdmin: async (req, res) => {
 		try {
+            
 			const params = _.extend(req.query || {}, req.params || {}, req.body || {});
-
+            console.log(params);
             const selected_user = await models.user.findOne({ where: { id: params.user_id }, raw: true });
             if(!selected_user){
                 return res.redirect('/');

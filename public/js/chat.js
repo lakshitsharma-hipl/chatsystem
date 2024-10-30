@@ -79,7 +79,7 @@ jQuery(document).ready(function ($) {
             scrollToLatestMessage();
         }
     });
-
+    let typingTimer;
     // Send a message to users
     document.getElementById('admin-chat-form') && document.getElementById('admin-chat-form').addEventListener('submit', (e) => {
         e.preventDefault();
@@ -117,6 +117,29 @@ jQuery(document).ready(function ($) {
 			socket.emit('adminMessageReceived', { roomName: 'adminRoom', msg });
             input.value = '';
         }
+    });
+
+    // Show typing indecator 
+    const message_field = document.getElementById('send-message');
+    
+    message_field.addEventListener('keyup', () => {        
+        const recipient_id = 1;        
+        const sender_id = $(".select-client").val();        
+        socket.emit('typing', { roomName, sender_id, recipient_id });        
+        clearTimeout(typingTimer);        
+        typingTimer = setTimeout(() => {
+            socket.emit('stopTyping', { roomName, sender_id, recipient_id });
+        }, 500);
+    });
+    socket.on('displayTyping', ({ sender_id, recipient_id }) => {
+        console.log('displayTyping', sender_id);
+        const typingIndicator = document.getElementById('typing-indicator');
+        typingIndicator.innerText = `User ${sender_id} is typing...`;
+        typingIndicator.style.display = 'block';
+    });
+    socket.on('hideTyping', ({ sender_id, recipient_id }) => {
+        const typingIndicator = document.getElementById('typing-indicator');
+        typingIndicator.style.display = 'none';
     });
     // Select the container that holds all the messages
     const messageContainer = document.querySelector('.chat-container ul');

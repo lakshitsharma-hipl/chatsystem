@@ -101,14 +101,33 @@ io.on('connection', async (socket) => {
         });
     });
 	
+    socket.on('typing', ({ roomName, sender_id, recipient_id }) => {
+        io.to(roomName).emit('displayTyping', { sender_id, recipient_id });
+    });
+
+    socket.on('stopTyping', ({ roomName, sender_id, recipient_id }) => {
+        io.to(roomName).emit('hideTyping', { sender_id });
+    });
+
+
+
+
+    
+
+
+    
 	socket.on('adminMessageReceived', async ({ roomName, msg }) => {
         io.to(roomName).emit('adminNotification', msg);
     })
+
+
 
     // Disconnect event
     socket.on('disconnect', () => {
         //console.log('User disconnected:', socket.id);
     });
+
+
 });
 
 // Listen on the appropriate port for your server
