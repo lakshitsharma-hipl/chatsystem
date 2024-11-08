@@ -23,6 +23,7 @@
                                     <img src="/images/client.svg" alt="icon">
                                 </div>
                                 <h1>Admin Messenger</h1>
+                                <input type="hidden" class="current_user" value="<%= selected_user.id %>" />
                                 <select class="form-control select-client">
                                     <% user_list.map(function(response,i){ %>
                                         <% if(response.id != 1){ %>
@@ -64,8 +65,8 @@
                                             <div class="input-group-prepend">
                                                 <!--  -->
                                                 <div class="gif_popup">
-                                                    <div class="gif_search_con">
-                                                        <input type="text" class="gif_search_keyup" data-usertype="admin" id="gif_search_keyup" placeholder="Search for a GIF...">
+                                                    <div class="gif_search_con mt-2 px-2">
+                                                        <input type="text" class="gif_search_keyup form-control" data-usertype="admin" id="gif_search_keyup" placeholder="Search for a GIF...">
                                                     </div>
                                                     <div id="gif-container"></div>                                                    
                                                 </div>

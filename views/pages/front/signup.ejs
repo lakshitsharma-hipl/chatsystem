@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%=title%></title>
+    </head>
+    <body>        
+        <form id="chat_signup" method="post" enctype="multipart/form-data" class="form-test">
+            <div class="form-group">
+                <label for="full_name">First Name</label>
+                <input type="text" class="form-control required" name="first_name" id="first_name" value="Hello" placeholder="Enter your first name">            
+            </div>
+            <div class="form-group">
+                <label for="full_name">Last Name</label>
+                <input type="text" class="form-control required" name="last_name" id="last_name" value="Test" placeholder="Enter your last name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control required" name="emp_email" id="email" value="hello@gmail.com" placeholder="Enter email">            
+            </div>
+            <div class="form-group">
+                <label for="emp_profile_pic">Password</label>
+                <input type="password" class="form-control required" name="emp_password" value="Test@123" id="emp_password" placeholder="Enter Password" />
+            </div>
+            <div class="form-group">
+                <label for="emp_profile_pic">Profile Pic</label>
+                <input type="file" class="form-control" name="emp_profile_pic" id="emp_profile_pic" placeholder="Upload Profile Pic">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <a href="/login">Login</a>
+    </body>
+</html>

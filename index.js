@@ -11,12 +11,21 @@ const models = require("./models");
 var app = express();
 const server = http.createServer(app);
 const io = new Server(server);
-
+const session = require('express-session');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.set('layout', 'layouts/front-layout');
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(session({
+    secret: 'chat_secretcred',
+    resave: false,
+    saveUninitialized: false,
+    expires: new Date(Date.now() + (30*86400*1000))
+}));
 
 // app.use(express.urlencoded({ limit: '100mb', extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -41,7 +50,7 @@ app.get('/search-gif', async (req, res) => {
     
     const fetch = (await import('node-fetch')).default;
     try {
-        const response = await fetch(`https://tenor.googleapis.com/v2/search?q=${query}&key=${tenorApiKey}&limit=5`);
+        const response = await fetch(`https://tenor.googleapis.com/v2/search?q=${query}&key=${tenorApiKey}&limit=10`);
         const data = await response.json();
         res.json(data.results);
     } catch (error) {
@@ -51,6 +60,7 @@ app.get('/search-gif', async (req, res) => {
 });
 
 var Sequelize = require('sequelize');
+const exp = require('constants');
 app.locals.sequelize = new Sequelize('chat_system', 'root', '', {
     host: 'localhost',
     dialect: 'mysql',
@@ -108,20 +118,9 @@ io.on('connection', async (socket) => {
     socket.on('stopTyping', ({ roomName, sender_id, recipient_id }) => {
         io.to(roomName).emit('hideTyping', { sender_id });
     });
-
-
-
-
-    
-
-
-    
 	socket.on('adminMessageReceived', async ({ roomName, msg }) => {
         io.to(roomName).emit('adminNotification', msg);
     })
-
-
-
     // Disconnect event
     socket.on('disconnect', () => {
         //console.log('User disconnected:', socket.id);

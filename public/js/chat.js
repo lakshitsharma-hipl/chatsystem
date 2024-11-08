@@ -1,4 +1,22 @@
 jQuery(document).ready(function ($) {
+    const emojiRegex = /^[\p{Emoji}\p{Emoji_Presentation}\p{Extended_Pictographic}]$/u;
+
+    function checkSingleEmoji(msg) {
+        if (emojiRegex.test(msg)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    $( ".chat-container ul li" ).each(function( index ) {
+        var all_msg = $(this).find('.chatblock p').text();
+        let single_emoji_class = '';
+        if(checkSingleEmoji(all_msg)) {
+            single_emoji_class = 'single_emo';
+        }
+        $(this).find('.chatblock').addClass(single_emoji_class);
+    });
+    
     const socket = io('http://localhost:5159');
 
     socket.on('connect', () => {
@@ -37,16 +55,23 @@ jQuery(document).ready(function ($) {
         // Create a new date
         const date = new Date();
         const formattedDate = formatDate(date);
+        let single_emoji_class = '';
+        if(checkSingleEmoji(msg.message)) {
+            single_emoji_class = 'single_emo';
+        }
         if(msg.user_id == 1){
+
             let adminItem = `<li class="message right">
                 <div class="chat-date">${formattedDate}</div>
-                <div class="chatblock">
+                <div class="chatblock ${single_emoji_class}">
                     <p>${msg.message}</p>
                 </div>
             </li>`;
+
+            
             let userItem = `<li class="message left">
                 <div class="chat-date">${formattedDate}</div>
-                <div class="chatblock">
+                <div class="chatblock ${single_emoji_class}">
                     <p>${msg.message}</p>
                 </div>
             </li>`;
@@ -61,13 +86,13 @@ jQuery(document).ready(function ($) {
         if(msg.recipient_id == 1){
             let adminItem = `<li class="message left">
                 <div class="chat-date">${formattedDate}</div>
-                <div class="chatblock">
+                <div class="chatblock ${single_emoji_class}">
                     <p>${msg.message}</p>
                 </div>
             </li>`;
             let userItem = `<li class="message right">
                 <div class="chat-date">${formattedDate}</div>
-                <div class="chatblock">
+                <div class="chatblock  ${single_emoji_class}">
                     <p>${msg.message}</p>
                 </div>
             </li>`;

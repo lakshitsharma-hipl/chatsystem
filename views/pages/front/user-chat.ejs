@@ -23,6 +23,7 @@
                                     <img src="/images/client.svg" alt="icon">
                                 </div>
                                 <h1>User Messenger</h1>
+                                <input type="hidden" class="current_user" value="<%= selected_user.id %>" />
                                 <select class="form-control select-client">
                                     <option value="<%=selected_user.id%>"><%=selected_user.name%></option>
                                 </select>
@@ -59,8 +60,8 @@
                                             <input type="text" class="form-control" id="send-message" placeholder="Type your Message....">
                                             <div class="input-group-prepend">
                                                 <div class="gif_popup">
-                                                    <div class="gif_search_con">
-                                                        <input type="text" class="gif_search_keyup" data-usertype="user" id="gif_search_keyup" placeholder="Search for a GIF...">
+                                                    <div class="gif_search_con mt-2 px-2">
+                                                        <input type="text" class="gif_search_keyup form-control" data-usertype="user" id="gif_search_keyup" placeholder="Search for a GIF...">
                                                     </div>
                                                     <div id="gif-container"></div>                                                    
                                                 </div>

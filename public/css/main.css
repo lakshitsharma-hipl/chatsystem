@@ -1409,7 +1409,9 @@ li.nav-item {
     padding: 15px;
     border-radius: 10px;
     filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.2));
-    min-width: 70px;
+    min-width: 80px;
+    width: fit-content;
+    flex: 0 0 auto;
 }
 
 .chat-container .message .chatblock p {
@@ -1438,12 +1440,12 @@ li.nav-item {
 
 .chat-container .message.right {
     align-self: flex-end;
-    text-align: right;
 }
 
 .chat-container .message.right .chatblock {
     background: #990100;
     filter: drop-shadow(-1px 2px 3px rgba(0, 0, 0, 0.2));
+    float: right;
 }
 
 .chat-container .message.right .chatblock:after {
@@ -3634,10 +3636,6 @@ body {
     text-transform: capitalize;
 }
 
-input {
-    text-transform: capitalize;
-}
-
 span.text_lowercase_wrap {
     color: inherit !important;
     font-weight: initial !important;
@@ -4713,19 +4711,22 @@ a.gif_pop_opener img {
 }
 .gif_popup {
     display: none;
-}
-.gif_popup {
     position: absolute;
     bottom: 0px;
     right: 0;
     height: 300px;
-    background: #dddddd87;
+    background: #ffe9e9;
     border-radius: 10px;
     border: 1px solid;
     width: 40%;
+    overflow: hidden auto;
+    z-index: 999;
 }
 .chatblock img {
     width: 150px;
+}
+.chat-container .chatblock.single_emo p {
+    font-size: 50px;
 }
 #gif-container {
     display: flex;
@@ -4736,8 +4737,8 @@ a.gif_pop_opener img {
 }
 
 .gif-image {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     cursor: pointer;
     border-radius: 8px;
     transition: transform 0.2s;
@@ -4745,6 +4746,15 @@ a.gif_pop_opener img {
 
 .gif-image:hover {
     transform: scale(1.1);
+}
+form#admin-chat-form, form#user-chat-form {
+    position: relative;
+}
+#typing-indicator {
+    width: 100%;
+    position: absolute;
+    top: -24px;
+    z-index: 9999;
 }
 
 /* Gif CSS end */
