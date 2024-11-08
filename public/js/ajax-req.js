@@ -60,11 +60,13 @@ jQuery(document).ready(function($){
             // Check if response is okay
             if (!result.ok) {
                 throw new Error(`HTTP error! Status: ${result.status}`);
+            } else {
+                            // Parse the response
+                const respnse = await result.json();
+                console.log("Response Data:", respnse);
+
             }
         
-            // Parse the response
-            const data = await result.json();
-            console.log("Response Data:", data);
         } catch (error) {
             console.error("Error:", error);
         }

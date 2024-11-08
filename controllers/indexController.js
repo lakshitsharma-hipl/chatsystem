@@ -2,7 +2,7 @@ const _ = require("underscore");
 const models = require("../models");
 const crypto = require('crypto');
 const functions = require('./helper-funtions');
-const session = require('express-session');
+
 
 module.exports = {
   userLogin: async (req, res) => {
@@ -44,9 +44,15 @@ module.exports = {
       replacements: [full_name, email, profile_pic_nm, password, role],
       type: req.app.locals.sequelize.QueryTypes.INSERT
     });
+    
+    if(insertData) {
+      res.json({status: 'success', error: 'Something went wrong!', errDev: 'Register insert id not found'});
+    } else {
+      res.json({status: 'failed', error: 'Something went wrong!', errDev: 'Register insert id not found'});
+    }
     console.log('Insert Check', insertData);
 
-    res.json({alldata: enc_pass});
+    
   },
 	dashboard: async (req, res) => {
 		try {
