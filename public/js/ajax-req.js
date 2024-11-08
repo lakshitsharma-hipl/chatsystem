@@ -1,3 +1,4 @@
+const { response } = require("../..");
 
 
 jQuery(document).ready(function($){
@@ -63,7 +64,12 @@ jQuery(document).ready(function($){
             } else {
                             // Parse the response
                 const respnse = await result.json();
-                console.log("Response Data:", respnse);
+                if(response.status == 'success') {
+                    console.log("Response Data:", respnse);
+                } else {
+                                        
+                }
+                
 
             }
         
