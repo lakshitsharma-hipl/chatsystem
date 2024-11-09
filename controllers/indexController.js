@@ -4,6 +4,8 @@ const crypto = require('crypto');
 const functions = require('./helper-funtions');
 const url = require('url');
 const http = require('http');
+const addressit = require('addressit');
+const geolib = require('geolib');
 
 module.exports = {
   userLogin: async (req, res) => {
@@ -20,6 +22,14 @@ module.exports = {
     try {
       const params = _.extend(req.query || {}, req.params || {}, req.body || {});
       let title = "Signup";
+
+      
+
+      // parse a made up address, with some slightly tricky parts
+      const address = addressit('1 Link Ave, Clifton, York YO30 6HN, UK');
+
+      // now log that address to the console
+      console.log(address)
       // functions.getFilesInDirectory('profile-pic');      
       res.render('pages/front/signup', { title, layout: 'layouts/front-layout'});
     } catch (e) {
