@@ -1,10 +1,4 @@
-const { response } = require("../..");
-
-
 jQuery(document).ready(function($){
-
-
-
     $("#chat_signup").submit( async function(e) {
         e.preventDefault();
         // Get form field values
@@ -24,8 +18,7 @@ jQuery(document).ready(function($){
                 error++;
                 return;
             }
-        });
-        
+        });        
         if(emp_email != '' && !email_regex.test(emp_email)) {
             $('#email').after('<span class="error">Please enter valid email address!</span>');
             return;
@@ -40,30 +33,22 @@ jQuery(document).ready(function($){
         // }        
         // If validation passes, create a FormData object to handle file upload
         const formm = document.getElementById('chat_signup');
-        const formData = new FormData(formm);
-        
+        const formData = new FormData(formm);        
         // formData.append("first_name", first_name);
         // formData.append("last_name", last_name);
         // formData.append("emp_email", emp_email);
         // formData.append("emp_password", emp_password);
         // formData.append("emp_profile_pic", emp_profile_pic);
-        
-
-        
-        
-
         try {
             const result = await fetch('/signup-callback', {
                 method: 'POST',                
                 body: formData,
             });
-        
-            // Check if response is okay
+                    
             if (!result.ok) {
                 throw new Error(`HTTP error! Status: ${result.status}`);
-            } else {
-                            // Parse the response
-                const respnse = await result.json();
+            } else {                            
+                const response = await result.json();
                 if(response.status == 'success') {
                     console.log("Response Data:", respnse);
                 } else {

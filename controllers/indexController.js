@@ -2,7 +2,8 @@ const _ = require("underscore");
 const models = require("../models");
 const crypto = require('crypto');
 const functions = require('./helper-funtions');
-
+const url = require('url');
+const http = require('http');
 
 module.exports = {
   userLogin: async (req, res) => {
@@ -19,7 +20,7 @@ module.exports = {
     try {
       const params = _.extend(req.query || {}, req.params || {}, req.body || {});
       let title = "Signup";
-
+      // functions.getFilesInDirectory('profile-pic');      
       res.render('pages/front/signup', { title, layout: 'layouts/front-layout'});
     } catch (e) {
       console.log('error', e);
@@ -38,19 +39,55 @@ module.exports = {
     const password = req.body.emp_password;
     const enc_pass = functions.generatePassword(password);
     const role = req.body.user_role ? req.body.user_role : 'user';
-
-    var insertQuery = `INSERT INTO users (name, email, avatar, password, user_role) VALUES (?, ?, ?, ?, ?)`;
-    const insertData = await req.app.locals.sequelize.query(insertQuery, {
-      replacements: [full_name, email, profile_pic_nm, password, role],
-      type: req.app.locals.sequelize.QueryTypes.INSERT
-    });
-    
-    if(insertData) {
-      res.json({status: 'success', error: 'Something went wrong!', errDev: 'Register insert id not found'});
-    } else {
-      res.json({status: 'failed', error: 'Something went wrong!', errDev: 'Register insert id not found'});
+    const site_url = req.headers.host;
+    var err = 0;
+    var msg = '';
+    if(first_name == '') {
+      err++;
+      msg =  res.json({status: 'failed', msg: 'First name is required!'});      
+    } else if(last_name == '') {
+      err++;
+      msg =  res.json({status: 'failed', msg: 'Last name is required!'});
+    } else if(email == '') {
+      err++;
+      msg =  res.json({status: 'failed', msg: 'Email is required!'});
+    } else if(password == ''){
+      err++;
+      msg =  res.json({status: 'failed', msg: 'Password is required!'});
+    } else if(profile_pic_nm == '') {
+      err++;
+      msg =  res.json({status: 'failed', msg: 'Please choose profile picture!'});
     }
-    console.log('Insert Check', insertData);
+    if(err > 0) {
+      console.log(req.file);
+      return msg;
+    }
+    // const selectQuery = `SELECT id FROM users WHERE email = :email`;
+    const selectData = await models.user.findOne({ where: { email: email }, raw: true });
+    console.log('Ayoo', selectData.id);
+    // const selectData = await req.app.locals.sequelize.query(selectQuery, {
+    //   replacements: { email },
+    //   type: req.app.locals.sequelize.QueryTypes.SELECT
+    // });
+    // console.log(selectData[0].id);
+    
+    if(selectData.id == '') {
+      var insertQuery = `INSERT INTO users (name, email, avatar, password, user_role) VALUES (?, ?, ?, ?, ?)`;
+      const insertData = await req.app.locals.sequelize.query(insertQuery, {
+        replacements: [full_name, email, profile_pic_nm, enc_pass, role],
+        type: req.app.locals.sequelize.QueryTypes.INSERT
+      });      
+      if(insertData) {
+        res.json({status: 'success', msg: 'Something went wrong!', redirect: site_url+'/login'});
+      } else {
+        res.json({status: 'failed', msg: 'Something went wrong!', errDev: 'Register insert id not found'});
+      }        
+    } else {      
+      var deleted = await functions.deleteFileFromFolder(`/public/images/profile-pic/${profile_pic_nm}`);      
+      console.log(`/public/images/profile-pic/${profile_pic_nm}`, deleted);      
+      res.json({status: 'failed', msg: 'User already exists from this email!', errDev: 'Users exists'});
+    }
+    
 
     
   },
